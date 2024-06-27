@@ -6,7 +6,7 @@ void Gerenciador::cadastrarAstronauta(std::string cpf, std::string nome, int ida
         Astronauta *astronauta = new Astronauta(cpf, nome, idade);
         astronautas.push_back(astronauta);
     }else{
-        std::cout << "Astronauta já encontrado em nossa base de dados." << std::endl;
+        std::cout << "Astronauta já cadastrado em nossa base de dados." << std::endl;
     }
 }
 
@@ -15,7 +15,7 @@ void Gerenciador::cadastrarVoo(int codigo){
         Voo *voo = new Voo(codigo);
         voos.push_back(voo);
     }else{
-        std::cout << "Voo já encontrado em nossa base de dados." << std::endl;
+        std::cout << "Voo já cadastrado em nossa base de dados." << std::endl;
     }
 }
 
@@ -62,7 +62,7 @@ void Gerenciador::removerAstronautaDeVoo(std::string cpf, int codigoVoo){
         return;
     } else {
         voo->removerPassageiro(astronauta);
-        std::cout << "Astronauta removido do voo." << std::endl;
+        std::cout << "Astronauta removido do voo com sucesso." << std::endl;
     }
 }
 
@@ -80,14 +80,14 @@ void Gerenciador::lancarVoo(int codigoVoo){
         return;
     } else if(voo->getStatus() != 1){
         std::cout << "Não é possível lançar o voo, pois ele não está em planejamento" << std::endl;
+        return;
     } else {
         voo->setStatus(2);
         for (Astronauta *astronauta : voo->getPassageiros()){
             astronauta->tornarIndisponivel();
         }
+        std::cout << "Voo lançado com sucesso!" << std::endl;
     }
-    std::cout << "Voo lançado com sucesso!" << std::endl;
-
 }
 
 void Gerenciador::explodirVoo(int codigoVoo){
@@ -137,14 +137,17 @@ void Gerenciador::finalizarVoo(int codigoVoo){
 }
 
 void Gerenciador::listarTodosVoos(){
-    std::cout << "Todos os voos:" << std::endl;
-    for(Voo *voo : voos){
-        std::cout << voo->toString();
+    if(voos.empty()){
+        std::cout << "Nãp temos registro de voos na nossa base de dados.." << std::endl;
+    } else {
+        for(Voo *voo : voos){
+            std::cout << voo->toString();
+        }
     }
 }
 
 void Gerenciador::listarAstronautasMortos(){
-    std::cout << "Astronautas Mortos" << std::endl;
+    bool naoTemMortos = true;
     for (Astronauta *astronauta : astronautas){
         if(!astronauta->isVivo()){
             std::cout << astronauta->toString() + ", Voos participados: ";
@@ -152,10 +155,14 @@ void Gerenciador::listarAstronautasMortos(){
                 for (Astronauta *a: voo->getPassageiros()){
                     if(astronauta->getCpf() == a->getCpf()){
                         std::cout << voo->toStringVoo();
+                        naoTemMortos = false;
                     }
                 }
             }
         }
+    }
+    if(naoTemMortos){
+        std::cout << "Não temos registros de astronautas mortos nossa base de dados." << std::endl;
     }
 }
 

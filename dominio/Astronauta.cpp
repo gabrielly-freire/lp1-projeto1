@@ -26,7 +26,6 @@ bool Astronauta::isVivo() {
     return vivo;
 }
 
-
 bool Astronauta::isDisponivel() {
     return disponivel;
 }
@@ -49,10 +48,3 @@ std::string Astronauta::toString() {
 
     return "Nome: " + nome + ", CPF: " + cpf + ", Idade: " + std::to_string(idade) + ", Vivo: " + isVivo + ", Disponível: " + isDisponivel + " ";
 }
-
-// std::string Astronauta::toString() {
-//     std::string isVivo = vivo ? "sim" : "não"; 
-//     std::string isDisponivel = disponivel ? "sim" : "não";
-
-//     return "Nome: " + nome + ", CPF: " + cpf + " ";
-// }

@@ -10,7 +10,7 @@ private:
     int idade;
     bool vivo;
     bool disponivel;
-    // std::vector<Voo*> voosParticipados;
+
 public:
     // construtor
     Astronauta(std::string cpf, std::string nome, int idade);
@@ -30,6 +30,5 @@ public:
     //toString
     std::string toString();
 };
-
 
 #endif
