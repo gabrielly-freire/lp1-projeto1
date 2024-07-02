@@ -2,7 +2,7 @@
 #include "util.h"
 
 void menu(){
-    std::cout << "======================MENU=============================" << std::endl;
+    std::cout << "=========================MENU=========================" << std::endl;
     std::cout << "1 - Cadastrar astronauta" << std::endl;
     std::cout << "2 - Cadastrar voo" << std::endl;
     std::cout << "3 - Adicionar astronauta em voo" << std::endl;
