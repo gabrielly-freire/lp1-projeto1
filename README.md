@@ -86,19 +86,19 @@ O gerenciador de voos consiste em um projeto da Linguagens de Programação 1 (L
 
 ## Como usar?
 
-### 1. Compile os arquivos
+**1. Compile os arquivos**
 
 ```bash
 make programa
 ```
 
-### 2. Execute o programa
+**2. Execute o programa**
 
 ```bash
 ./programa
 ```
 
-### 3. Explorar o projeto por meio do menu de operações
+**3. Explorar o projeto por meio do menu de operações**
 
 ```plaintext
 ======================MENU=============================
@@ -115,15 +115,15 @@ make programa
 Digite a opção desejada: 
 ```
 
-#### Explicação das operações
+**Explicação das operações**
 
-1. Cadastrar astronauta: Informe o CPF, nome e idade para cadastrar um novo astronauta.
-2. Cadastrar voo: Informe o código do voo para cadastrá-lo
-3. Adicionar astronauta em voo: Informe o CPF do astronauta e o código do voo para adicioná-lo.
-4. Remover astronauta de um voo: Informe o CPF do astronauta e o código do voo para removê-lo.
-5. Lançar um voo: Informe o código do voo para lançá-lo (necessário ter pelo menos um astronauta disponível).
-6. Explodir voo: Informe o código do voo para explodi-lo (todos os astronautas a bordo morrerão).
-7. Finalizar um voo: Informe o código do voo para finalizá-lo com sucesso (astronautas a bordo voltarão a ficar disponíveis).
-8. Listar todos os voos: Lista todos os voos cadastrados, com seus respectivos astronautas.
-9. Listar todos os astronautas mortos: Lista todos os astronautas que morreram em voos, com detalhes dos voos que participaram.
-10. Sair: Encerra o programa, mas o dados não ficam salvos.
+1. **Cadastrar astronauta:** Informe o CPF, nome e idade para cadastrar um novo astronauta.
+2. **Cadastrar voo:** Informe o código do voo para cadastrá-lo
+3. **Adicionar astronauta em voo:** Informe o CPF do astronauta e o código do voo para adicioná-lo.
+4.** Remover astronauta de um voo:** Informe o CPF do astronauta e o código do voo para removê-lo.
+5. **Lançar um voo:** Informe o código do voo para lançá-lo (necessário ter pelo menos um astronauta disponível).
+6. **Explodir voo:** Informe o código do voo para explodi-lo (todos os astronautas a bordo morrerão).
+7. **Finalizar um voo:** Informe o código do voo para finalizá-lo com sucesso (astronautas a bordo voltarão a ficar disponíveis).
+8. **Listar todos os voos:** Lista todos os voos cadastrados, com seus respectivos astronautas.
+9. **Listar todos os astronautas mortos:** Lista todos os astronautas que morreram em voos, com detalhes dos voos que participaram.
+0. **Sair:** Encerra o programa, mas o dados não ficam salvos.
