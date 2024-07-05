@@ -5,6 +5,7 @@ void Gerenciador::cadastrarAstronauta(std::string cpf, std::string nome, int ida
     if(checarCpf(cpf)){
         Astronauta *astronauta = new Astronauta(cpf, nome, idade);
         astronautas.push_back(astronauta);
+        std::cout << "Astronauta cadastrado com sucesso!" << std::endl;
     }else{
         std::cout << "Astronauta já cadastrado em nossa base de dados." << std::endl;
     }
@@ -14,6 +15,7 @@ void Gerenciador::cadastrarVoo(int codigo){
     if(checarCodigo(codigo)){
         Voo *voo = new Voo(codigo);
         voos.push_back(voo);
+        std::cout << "Voo cadastrado com sucesso!" << std::endl;
     }else{
         std::cout << "Voo já cadastrado em nossa base de dados." << std::endl;
     }
@@ -75,6 +77,9 @@ void Gerenciador::lancarVoo(int codigoVoo){
     } else if(voo->getPassageiros().empty()){
         std::cout << "Impossível lançar o voo sem ao menos um astronauta. Por favor, adicione pelo menos um astronauta." << std::endl;
         return;
+    } else if(voo->getStatus() == 2){
+        std::cout << "Voo já foi lançado" << std::endl;
+        return;
     } else if(!podeLancarVoo(codigoVoo)){
         std::cout << "Não é possível lançar o voo, pois há tripulantes em outro voo no momento." << std::endl;
         return;
@@ -108,13 +113,14 @@ void Gerenciador::explodirVoo(int codigoVoo){
 
         for(Voo *voo : voos){
             for (Astronauta *astronauta : voo->getPassageiros()){
-                if(!astronauta->isVivo()){
-                    removerAstronautaDeVoo(astronauta->getCpf(), voo->getCodigo());
+                if(!astronauta->isVivo() && voo->getStatus() == 1){
+                    removerAstronauta(astronauta->getCpf(), voo->getCodigo());
                 }
             }  
         }
         
         std::cout << "Voo explodiu" << std::endl;
+
     }
 }
 
@@ -162,7 +168,7 @@ void Gerenciador::listarAstronautasMortos(){
         }
     }
     if(naoTemMortos){
-        std::cout << "Não temos registros de astronautas mortos nossa base de dados." << std::endl;
+        std::cout << "Não temos registros de astronautas mortos na nossa base de dados." << std::endl;
     }
 }
 
@@ -231,4 +237,10 @@ bool Gerenciador::podeRemoverAstronauta(std::string cpf, int codigo){
         }
     }
     return false;
+}
+
+void Gerenciador::removerAstronauta(std::string cpf, int codigo){
+    Voo *voo = encontrarVoo(codigo);
+    Astronauta *astronauta = encontrarAstronauta(cpf);
+    voo->removerPassageiro(astronauta);
 }

@@ -18,16 +18,18 @@ int main() {
     do {
         menu();
         std::cin >> opcao;
+        std::cin.ignore();
 
         switch (opcao) {
             case 1:
                 std::cout << "=================CADASTRAR ASTRONAUTA=================" << std::endl;    
                 INFORME_CPF;
-                std::cin >> cpf;
+                std::getline(std::cin, cpf);
                 INFORME_NOME;
-                std::cin >> nome;
+                std::getline(std::cin, nome);
                 INFORME_IDADE;
                 std::cin >> idade;
+                std::cin.ignore();
 
                 gerenciador.cadastrarAstronauta(cpf, nome, idade);
 
@@ -36,6 +38,7 @@ int main() {
                 std::cout << "====================CADASTRAR VOO=====================" << std::endl;
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.cadastrarVoo(codigo);
 
@@ -43,9 +46,10 @@ int main() {
             case 3:
                 std::cout << "==============ADICIONAR ASTRONAUTA A VOO===============" << std::endl;
                 INFORME_CPF;
-                std::cin >> cpf;
+                std::getline(std::cin, cpf);
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.adicionarAstronautaEmVoo(cpf, codigo);
 
@@ -53,30 +57,37 @@ int main() {
             case 4:
                 std::cout << "=================REMOVER ASTRONAUTA DE VOO================" << std::endl;
                 INFORME_CPF;
-                std::cin >> cpf;
+                std::getline(std::cin, cpf);
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.removerAstronautaDeVoo(cpf, codigo);
 
                 break;
             case 5:
+                std::cout << "====================LANÇAMENTO DE VOO===================" << std::endl;
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.lancarVoo(codigo);
 
                 break;
             case 6:
+                std::cout << "======================EXPLODIR VOO=====================" << std::endl;
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.explodirVoo(codigo);
 
                 break;
             case 7:
+                std::cout << "======================FINALIZAR VOO=====================" << std::endl;
                 INFORME_CODIGO;
                 std::cin >> codigo;
+                std::cin.ignore();
 
                 gerenciador.finalizarVoo(codigo);
 
@@ -92,9 +103,10 @@ int main() {
 
                 break;
             case 0:
-                std::cout << "Obrigado por utilizar nosso sistema de gerenciamento de voos." << std::endl;                break;
+                std::cout << "Obrigado por utilizar nosso sistema de gerenciamento de voos." << std::endl;
+                break;
             default:
-                std::cout << "Opção inválida. Tente novamente." << endl;
+                std::cout << "Opção inválida. Tente novamente." << std::endl;
         }
     } while (opcao != 0);
 

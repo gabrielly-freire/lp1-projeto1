@@ -18,6 +18,7 @@ private:
     bool checarCodigo(int codigo);
     bool podeAdicionarAstronauta(std::string cpf, int codigo);
     bool podeRemoverAstronauta(std::string cpf, int codigo);
+    void removerAstronauta(std::string cpf, int codigo);
 public:
     // metodos principais
     void cadastrarAstronauta(std::string cpf, std::string nome, int idade);
